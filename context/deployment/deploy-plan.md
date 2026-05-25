@@ -1,10 +1,11 @@
 # Deploy Plan: crm → Cloudflare Workers
 
-**Status:** Pending first deploy  
+**Status:** Deployed  
 **Platform:** Cloudflare Workers  
-**Worker name:** `crm` → `crm.<account-subdomain>.workers.dev`  
-**Deployed at:** —  
-**Live URL:** —
+**Worker name:** `crm`  
+**Deployed at:** 2026-05-25  
+**Live URL:** https://crm.wojciech-szczygielski91.workers.dev  
+**Version ID:** 6a05d149-f151-42ff-bb8d-44e20c109278
 
 ---
 

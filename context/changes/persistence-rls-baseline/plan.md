@@ -380,12 +380,12 @@ Greenfield schema — no existing data to migrate. The trigger-function migratio
 
 #### Automated
 
-- [ ] 3.1 Local stack running: `npx supabase start`
-- [ ] 3.2 Test passes: `npm test`
-- [ ] 3.3 Linting passes: `npm run lint`
-- [ ] 3.4 Type checking passes: `npm run typecheck`
+- [x] 3.1 Local stack running: `npx supabase start`
+- [x] 3.2 Test passes: `npm test`
+- [x] 3.3 Linting passes: `npm run lint`
+- [x] 3.4 Type checking passes: `npm run typecheck`
 
 #### Manual
 
-- [ ] 3.5 No leftover `public.canary` table or test users after `npm test` (verify in Studio)
-- [ ] 3.6 Weakening a policy makes the test fail (guard confirmed), then reverted
+- [x] 3.5 No leftover `public.canary` table or test users after `npm test` (verify in Studio)
+- [x] 3.6 Weakening a policy makes the test fail (guard confirmed), then reverted

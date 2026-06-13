@@ -13,7 +13,9 @@
     "format": "prettier --write .",
     "db:new": "supabase migration new",
     "db:reset": "supabase db reset",
-    "db:types": "mkdir -p src/db && supabase gen types typescript --local > src/db/database.types.ts"
+    "db:types": "mkdir -p src/db && supabase gen types typescript --local > src/db/database.types.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
@@ -40,6 +42,7 @@
   "devDependencies": {
     "@eslint/compat": "^2.0.3",
     "@eslint/js": "^9.29.0",
+    "@types/pg": "^8.20.0",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.7.0",
@@ -50,12 +53,14 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "husky": "9.1.7",
     "lint-staged": "^16.3.3",
+    "pg": "^8.21.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "supabase": "^2.23.4",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.59.2",
+    "vitest": "^4.1.8",
     "wrangler": "^4.90.0"
   },
   "overrides": {

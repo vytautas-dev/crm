@@ -25,14 +25,14 @@ No entity tables are created.
 
 ## Key Decisions Made
 
-| Decision               | Choice                                                            | Why                                                        | Source |
-| ---------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------- | ------ |
-| Verification strategy  | Canary table created + asserted + dropped inside a test          | Proves the real template end-to-end; leaves zero schema cruft | Plan   |
-| RLS policy shape       | 4 per-op policies, `authenticated` only, `auth.uid() = user_id`  | Matches CLAUDE.md's per-operation/per-role rule; auditable | Plan   |
-| Column convention      | `id`/`user_id`(→auth.users, `default auth.uid()`)/`created_at`/`updated_at` + shared trigger | One copy-paste block + one reusable trigger every slice reuses | Plan |
-| Test harness           | Vitest + supabase-js integration (two real users)                | Exercises the actual anon-key/JWT→`auth.uid()` path; runner slices need anyway | Plan |
-| Typed client           | Establish typegen now, wire `createServerClient<Database>`        | Completes the tooling story; S-01 just reruns `db:types`   | Plan   |
-| Workflow exposure      | npm scripts + `docs/reference/rls-convention.md`                 | One discoverable workflow + a canonical copy-paste source  | Plan   |
+| Decision              | Choice                                                                                       | Why                                                                            | Source |
+| --------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------ |
+| Verification strategy | Canary table created + asserted + dropped inside a test                                      | Proves the real template end-to-end; leaves zero schema cruft                  | Plan   |
+| RLS policy shape      | 4 per-op policies, `authenticated` only, `auth.uid() = user_id`                              | Matches CLAUDE.md's per-operation/per-role rule; auditable                     | Plan   |
+| Column convention     | `id`/`user_id`(→auth.users, `default auth.uid()`)/`created_at`/`updated_at` + shared trigger | One copy-paste block + one reusable trigger every slice reuses                 | Plan   |
+| Test harness          | Vitest + supabase-js integration (two real users)                                            | Exercises the actual anon-key/JWT→`auth.uid()` path; runner slices need anyway | Plan   |
+| Typed client          | Establish typegen now, wire `createServerClient<Database>`                                   | Completes the tooling story; S-01 just reruns `db:types`                       | Plan   |
+| Workflow exposure     | npm scripts + `docs/reference/rls-convention.md`                                             | One discoverable workflow + a canonical copy-paste source                      | Plan   |
 
 ## Scope
 
@@ -51,11 +51,11 @@ assert isolation across SELECT/INSERT/UPDATE/DELETE — the same path the real a
 
 ## Phases at a Glance
 
-| Phase                                   | What it delivers                                          | Key risk                                              |
-| --------------------------------------- | --------------------------------------------------------- | ----------------------------------------------------- |
-| 1. Migration tooling + DB primitives    | `migrations/`, trigger fn, npm scripts, typed client      | Typegen produces near-empty `Database` until S-01     |
-| 2. RLS convention: template + doc       | `rls-convention.md` + canary fixture + CLAUDE.md pointer  | Fixture drifting from the documented template         |
-| 3. Automated isolation test (Vitest)    | Two-user canary test proving RLS + clean teardown         | Test needs local stack (Docker); flaky if teardown leaks |
+| Phase                                | What it delivers                                         | Key risk                                                 |
+| ------------------------------------ | -------------------------------------------------------- | -------------------------------------------------------- |
+| 1. Migration tooling + DB primitives | `migrations/`, trigger fn, npm scripts, typed client     | Typegen produces near-empty `Database` until S-01        |
+| 2. RLS convention: template + doc    | `rls-convention.md` + canary fixture + CLAUDE.md pointer | Fixture drifting from the documented template            |
+| 3. Automated isolation test (Vitest) | Two-user canary test proving RLS + clean teardown        | Test needs local stack (Docker); flaky if teardown leaks |
 
 **Prerequisites:** local Supabase stack runnable (Docker, ~7 GB RAM); `supabase start` for Phases 1 & 3.
 **Estimated effort:** ~1–2 sessions across 3 phases (small code volume; care concentrated in the RLS template + test).

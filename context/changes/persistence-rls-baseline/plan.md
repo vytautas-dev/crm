@@ -368,13 +368,13 @@ Greenfield schema — no existing data to migrate. The trigger-function migratio
 
 #### Automated
 
-- [x] 2.1 Linting passes: `npm run lint`
-- [x] 2.2 Format check passes: `npm run format`
+- [x] 2.1 Linting passes: `npm run lint` — 9d061f9
+- [x] 2.2 Format check passes: `npm run format` — 9d061f9
 
 #### Manual
 
-- [x] 2.3 `docs/reference/rls-convention.md` renders; SQL block matches the canary fixture
-- [x] 2.4 CLAUDE.md pointer resolves to the new doc
+- [x] 2.3 `docs/reference/rls-convention.md` renders; SQL block matches the canary fixture — 9d061f9
+- [x] 2.4 CLAUDE.md pointer resolves to the new doc — 9d061f9
 
 ### Phase 3: Automated isolation verification (Vitest canary)
 

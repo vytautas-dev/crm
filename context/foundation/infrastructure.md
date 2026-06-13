@@ -23,14 +23,14 @@ The stack was bootstrapped with `@astrojs/cloudflare` — the only adapter that 
 
 Criteria scored Pass / Partial / Fail against the five agent-friendly criteria from `references/agent-friendly-criteria.md`. Hard filters applied first; interview weights applied to break ties.
 
-| Platform | CLI-first | Managed/Serverless | Agent-readable docs | Stable deploy API | MCP / Integration | Total |
-|---|---|---|---|---|---|---|
-| **Cloudflare Workers** | Pass | Pass | Pass | Pass | Pass | **5/5** |
-| **Netlify** | Pass | Pass | Pass | Pass | Pass | **5/5** |
-| **Render** | Partial | Partial | Pass | Pass | Pass | **3.5/5** |
-| **Vercel** | Pass | Pass | Pass | Pass | Partial | **4.5/5** |
-| **Railway** | Partial | Partial | Partial | Pass | Partial | **2.5/5** |
-| **Fly.io** | Partial | Partial | Partial | Partial | Fail | **1.5/5** |
+| Platform               | CLI-first | Managed/Serverless | Agent-readable docs | Stable deploy API | MCP / Integration | Total     |
+| ---------------------- | --------- | ------------------ | ------------------- | ----------------- | ----------------- | --------- |
+| **Cloudflare Workers** | Pass      | Pass               | Pass                | Pass              | Pass              | **5/5**   |
+| **Netlify**            | Pass      | Pass               | Pass                | Pass              | Pass              | **5/5**   |
+| **Render**             | Partial   | Partial            | Pass                | Pass              | Pass              | **3.5/5** |
+| **Vercel**             | Pass      | Pass               | Pass                | Pass              | Partial           | **4.5/5** |
+| **Railway**            | Partial   | Partial            | Partial             | Pass              | Partial           | **2.5/5** |
+| **Fly.io**             | Partial   | Partial            | Partial             | Partial           | Fail              | **1.5/5** |
 
 **Hard filters:** No platform was dropped — no persistent connections are required, so serverless-only platforms (Netlify, Vercel) remain eligible.
 
@@ -92,18 +92,18 @@ In week two of the 5-week sprint, the React island hydration SyntaxError (issue 
 
 ## Risk Register
 
-| Risk | Source | Likelihood | Impact | Mitigation |
-|---|---|---|---|---|
-| React island hydration SyntaxError in dev (issue #16387, open) | Research finding | H | M | Follow the workaround in the GitHub issue thread (restructure `react-dom/client` import path); validate in dev before first deploy |
-| Middleware + `nodejs_compat` causing SSR `[object Object]` (issue #15434, open) | Research finding | M | H | Avoid using middleware together with `nodejs_compat` until the issue is resolved; track issue for patch release |
-| Free-tier 10ms CPU limit hit by SSR rendering real data | Devil's advocate | H | M | Upgrade to Workers Paid ($5/mo) before shipping to production; treat this as a known line item, not a surprise |
-| AI analysis notification path undefined — US-01 criterion at risk | Devil's advocate | H | H | Design the Supabase Realtime client-side WebSocket integration explicitly before starting implementation; document the round-trip in CLAUDE.md |
-| `wrangler.jsonc` still in Pages deployment mode (soft-deprecated April 2025) | Unknown unknowns | M | H | Verify the config deploys to Workers (not Pages) via `wrangler deploy --dry-run` before CI is wired; follow the Cloudflare migration guide if needed |
-| Cloudflare Pages soft-deprecation — Pages dashboard features disappear over time | Research finding | M | L | Migrate fully to Workers deployment path (Workers Static Assets) before any new Pages-only feature is relied upon |
-| CJS dependency breaks workerd build silently | Devil's advocate | M | M | Add a pre-deploy check: `wrangler deploy --dry-run` surfaces CJS errors before they hit production; prefer ESM-only packages |
-| Cloudflare MCP tokens not configured — agent cannot use MCP observability | Unknown unknowns | H | L | Create a scoped Cloudflare API token (Workers:Edit, Account:Read), add to `.claude/settings.json` as the observability MCP env var; document in CLAUDE.md |
-| `astro:env/server` binding resolution fails at runtime (three-layer env system) | Unknown unknowns | M | H | Test all env bindings in the `.dev.vars` → local dev → staging → production path before MVP launch; document the binding layer in CLAUDE.md |
-| `workerd` dev server slower cold-start affecting after-hours productivity | Pre-mortem | M | L | Accept the tradeoff; use `--watch` mode after first cold start to keep workerd alive; monitor if it becomes blocking |
+| Risk                                                                             | Source           | Likelihood | Impact | Mitigation                                                                                                                                                |
+| -------------------------------------------------------------------------------- | ---------------- | ---------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| React island hydration SyntaxError in dev (issue #16387, open)                   | Research finding | H          | M      | Follow the workaround in the GitHub issue thread (restructure `react-dom/client` import path); validate in dev before first deploy                        |
+| Middleware + `nodejs_compat` causing SSR `[object Object]` (issue #15434, open)  | Research finding | M          | H      | Avoid using middleware together with `nodejs_compat` until the issue is resolved; track issue for patch release                                           |
+| Free-tier 10ms CPU limit hit by SSR rendering real data                          | Devil's advocate | H          | M      | Upgrade to Workers Paid ($5/mo) before shipping to production; treat this as a known line item, not a surprise                                            |
+| AI analysis notification path undefined — US-01 criterion at risk                | Devil's advocate | H          | H      | Design the Supabase Realtime client-side WebSocket integration explicitly before starting implementation; document the round-trip in CLAUDE.md            |
+| `wrangler.jsonc` still in Pages deployment mode (soft-deprecated April 2025)     | Unknown unknowns | M          | H      | Verify the config deploys to Workers (not Pages) via `wrangler deploy --dry-run` before CI is wired; follow the Cloudflare migration guide if needed      |
+| Cloudflare Pages soft-deprecation — Pages dashboard features disappear over time | Research finding | M          | L      | Migrate fully to Workers deployment path (Workers Static Assets) before any new Pages-only feature is relied upon                                         |
+| CJS dependency breaks workerd build silently                                     | Devil's advocate | M          | M      | Add a pre-deploy check: `wrangler deploy --dry-run` surfaces CJS errors before they hit production; prefer ESM-only packages                              |
+| Cloudflare MCP tokens not configured — agent cannot use MCP observability        | Unknown unknowns | H          | L      | Create a scoped Cloudflare API token (Workers:Edit, Account:Read), add to `.claude/settings.json` as the observability MCP env var; document in CLAUDE.md |
+| `astro:env/server` binding resolution fails at runtime (three-layer env system)  | Unknown unknowns | M          | H      | Test all env bindings in the `.dev.vars` → local dev → staging → production path before MVP launch; document the binding layer in CLAUDE.md               |
+| `workerd` dev server slower cold-start affecting after-hours productivity        | Pre-mortem       | M          | L      | Accept the tradeoff; use `--watch` mode after first cold start to keep workerd alive; monitor if it becomes blocking                                      |
 
 ## Getting Started
 
@@ -122,6 +122,7 @@ The project is already configured for Cloudflare Workers. The key steps for firs
 ## Out of Scope
 
 The following were not evaluated in this research:
+
 - Docker image configuration
 - CI/CD pipeline setup (covered by existing `.github/workflows/ci.yml`)
 - Production-scale architecture (multi-region, HA, DR)

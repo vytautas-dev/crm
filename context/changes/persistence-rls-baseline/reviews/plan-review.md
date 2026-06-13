@@ -1,4 +1,5 @@
 <!-- PLAN-REVIEW-REPORT -->
+
 # Plan Review: Owner-scoped Persistence + RLS Convention Baseline
 
 - **Plan**: context/changes/persistence-rls-baseline/plan.md
@@ -9,15 +10,16 @@
 
 ## Verdicts
 
-| Dimension | Verdict |
-|-----------|---------|
-| End-State Alignment | PASS |
-| Lean Execution | PASS |
-| Architectural Fitness | PASS |
-| Blind Spots | WARNING → PASS (F1 fixed) |
-| Plan Completeness | WARNING → PASS (F2, F3 fixed) |
+| Dimension             | Verdict                       |
+| --------------------- | ----------------------------- |
+| End-State Alignment   | PASS                          |
+| Lean Execution        | PASS                          |
+| Architectural Fitness | PASS                          |
+| Blind Spots           | WARNING → PASS (F1 fixed)     |
+| Plan Completeness     | WARNING → PASS (F2, F3 fixed) |
 
 ## Grounding
+
 6/6 paths ✓, supabase-js/build/lint verified, Progress↔Phase mechanical contract ✓, brief↔plan ✓.
 Promise-gap: every Desired-End-State item has a backing phase ✓.
 

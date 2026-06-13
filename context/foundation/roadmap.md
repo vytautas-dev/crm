@@ -21,7 +21,7 @@ A solo founder mid-fundraise tracks 20–80 investor relationships with no singl
 source of truth, so commitments slip and follow-ups are forgotten. Existing CRMs
 demand structured data entry, which founders won't do under pressure. The product
 wedge — the one trait that, if removed, makes this indistinguishable from a generic
-CRM — is that pasting raw text is the *entire* effort: the product extracts the
+CRM — is that pasting raw text is the _entire_ effort: the product extracts the
 summary and tasks, the founder only thinks. Primary use case is fundraising; the
 upload-to-action loop must prove its value before anything else is built on top.
 
@@ -35,25 +35,25 @@ this loop works; it directly satisfies the PRD's primary Success Criterion (US-0
 
 ## At a glance
 
-| ID    | Change ID                | Outcome (user can …)                                        | Prerequisites    | PRD refs                          | Status   |
-| ----- | ------------------------ | ----------------------------------------------------------- | ---------------- | --------------------------------- | -------- |
-| F-01  | persistence-rls-baseline | (foundation) owner-scoped persistence + RLS convention live | —                | NFR: privacy                      | ready    |
-| F-02  | background-ai-pipeline   | (foundation) async AI job + completion notification channel | F-01             | NFR: background, NFR: privacy     | proposed |
-| S-01  | company-management       | add, edit, archive, list, and set status on companies       | F-01             | US-01, FR-001, FR-002, FR-003, FR-004, FR-005 | proposed |
-| S-02  | paste-to-summary-tasks   | paste notes → cited summary + 1–5 prioritized tasks         | S-01, F-01, F-02 | US-01, FR-005, FR-006, FR-007, FR-008 | proposed |
-| S-03  | global-task-list         | view/filter the global task list, complete, drill into a company | S-02         | FR-009, FR-011, FR-012, FR-015    | proposed |
-| S-04  | manual-task-management   | create and edit manual tasks with priority and deadline     | S-02             | FR-010, FR-011, FR-012, FR-013, FR-014 | proposed |
-| S-05  | csv-company-import       | bulk-add companies via CSV import                           | S-01, F-01       | FR-016, FR-001                    | proposed |
+| ID   | Change ID                | Outcome (user can …)                                             | Prerequisites    | PRD refs                                      | Status   |
+| ---- | ------------------------ | ---------------------------------------------------------------- | ---------------- | --------------------------------------------- | -------- |
+| F-01 | persistence-rls-baseline | (foundation) owner-scoped persistence + RLS convention live      | —                | NFR: privacy                                  | ready    |
+| F-02 | background-ai-pipeline   | (foundation) async AI job + completion notification channel      | F-01             | NFR: background, NFR: privacy                 | proposed |
+| S-01 | company-management       | add, edit, archive, list, and set status on companies            | F-01             | US-01, FR-001, FR-002, FR-003, FR-004, FR-005 | proposed |
+| S-02 | paste-to-summary-tasks   | paste notes → cited summary + 1–5 prioritized tasks              | S-01, F-01, F-02 | US-01, FR-005, FR-006, FR-007, FR-008         | proposed |
+| S-03 | global-task-list         | view/filter the global task list, complete, drill into a company | S-02             | FR-009, FR-011, FR-012, FR-015                | proposed |
+| S-04 | manual-task-management   | create and edit manual tasks with priority and deadline          | S-02             | FR-010, FR-011, FR-012, FR-013, FR-014        | proposed |
+| S-05 | csv-company-import       | bulk-add companies via CSV import                                | S-01, F-01       | FR-016, FR-001                                | proposed |
 
 ## Streams
 
 Navigation aid — groups items that share a Prerequisites chain. Canonical ordering still lives in the dependency graph below; this table is the proposed reading order across parallel tracks.
 
-| Stream | Theme                  | Chain                                  | Note                                                              |
-| ------ | ---------------------- | -------------------------------------- | ---------------------------------------------------------------- |
+| Stream | Theme                  | Chain                                      | Note                                                             |
+| ------ | ---------------------- | ------------------------------------------ | ---------------------------------------------------------------- |
 | A      | Trzon: dane → pętla AI | `F-01` → `S-01` → `S-02` → `S-03` / `S-04` | Główny tor wartości; gwiazda przewodnia `S-02` jak najwcześniej. |
-| B      | Plumbing AI w tle      | `F-02`                                 | Buduj równolegle z `S-01`; dołącza do Stream A przy `S-02`.       |
-| C      | Onboarding masowy      | `S-05`                                 | Odgałęzienie od `S-01`; równolegle z pętlą AI (cel: szybkość).   |
+| B      | Plumbing AI w tle      | `F-02`                                     | Buduj równolegle z `S-01`; dołącza do Stream A przy `S-02`.      |
+| C      | Onboarding masowy      | `S-05`                                     | Odgałęzienie od `S-01`; równolegle z pętlą AI (cel: szybkość).   |
 
 ## Baseline
 
@@ -92,7 +92,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Parallel with:** S-01
 - **Blockers:** —
 - **Unknowns:** — (both resolved 2026-06-13: notification path → client-side status polling; AI provider → Anthropic Claude API. See `## Open Roadmap Questions`.)
-- **Risk:** Scoped to the *minimum* plumbing (one async job + a status field the browser polls + the Anthropic API call), not "all background processing" — the extraction logic itself lives in S-02 and exercises this plumbing through the real user flow. The polling decision removes the WebSocket-through-Workers risk that infrastructure.md flagged as the project's highest; remaining work is a straightforward async job + status field.
+- **Risk:** Scoped to the _minimum_ plumbing (one async job + a status field the browser polls + the Anthropic API call), not "all background processing" — the extraction logic itself lives in S-02 and exercises this plumbing through the real user flow. The polling decision removes the WebSocket-through-Workers risk that infrastructure.md flagged as the project's highest; remaining work is a straightforward async job + status field.
 - **Status:** proposed
 
 ## Slices
@@ -162,15 +162,15 @@ Foundations below assume these are present and do NOT re-scaffold them.
 
 ## Backlog Handoff
 
-| Roadmap ID | Change ID                | Suggested issue title                                  | Ready for `/10x-plan` | Notes |
-| ---------- | ------------------------ | ----------------------------------------------------- | --------------------- | ----- |
-| F-01       | persistence-rls-baseline | Persistence + owner-scoped RLS baseline               | yes                   | Run `/10x-plan persistence-rls-baseline` — unlocks the north star |
-| F-02       | background-ai-pipeline   | Background AI job + completion notification plumbing   | no                    | Needs F-01; resolve notification-path + AI-provider unknowns in planning |
-| S-01       | company-management       | Company management (add / edit / archive / list / status) | no                | Needs F-01 |
-| S-02       | paste-to-summary-tasks   | Paste notes → cited summary + tasks (north star)      | no                    | Needs S-01, F-01, F-02 |
-| S-03       | global-task-list         | Global task list with filtering and drill-down        | no                    | Needs S-02 |
-| S-04       | manual-task-management   | Manual task creation and editing                      | no                    | Needs S-02 |
-| S-05       | csv-company-import       | CSV bulk company import                               | no                    | Needs S-01, F-01; parallel with the AI loop |
+| Roadmap ID | Change ID                | Suggested issue title                                     | Ready for `/10x-plan` | Notes                                                                    |
+| ---------- | ------------------------ | --------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------ |
+| F-01       | persistence-rls-baseline | Persistence + owner-scoped RLS baseline                   | yes                   | Run `/10x-plan persistence-rls-baseline` — unlocks the north star        |
+| F-02       | background-ai-pipeline   | Background AI job + completion notification plumbing      | no                    | Needs F-01; resolve notification-path + AI-provider unknowns in planning |
+| S-01       | company-management       | Company management (add / edit / archive / list / status) | no                    | Needs F-01                                                               |
+| S-02       | paste-to-summary-tasks   | Paste notes → cited summary + tasks (north star)          | no                    | Needs S-01, F-01, F-02                                                   |
+| S-03       | global-task-list         | Global task list with filtering and drill-down            | no                    | Needs S-02                                                               |
+| S-04       | manual-task-management   | Manual task creation and editing                          | no                    | Needs S-02                                                               |
+| S-05       | csv-company-import       | CSV bulk company import                                   | no                    | Needs S-01, F-01; parallel with the AI loop                              |
 
 ## Open Roadmap Questions
 

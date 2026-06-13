@@ -64,6 +64,7 @@ sharing in MVP.
 ### Primary
 
 The upload-to-action loop works end-to-end:
+
 1. Founder adds a company (name, relationship status, optional notes)
 2. Uploads a `.md` file containing meeting notes, a transcript, or an email thread
 3. AI generates a relationship summary (what was discussed, what was promised, current status)
@@ -94,23 +95,28 @@ remains useful even when there are no new notes to upload.
 ### Company Management
 
 - FR-001: Founder can add a company. Priority: must-have
+
   > Socrates: Counter considered: "bulk import beats manual add for 80 companies."
   > Resolution: FR-016 added as must-have CSV import. Manual add is still needed
   > for one-off additions.
 
 - FR-002: Founder can edit a company. Priority: must-have
+
   > Socrates: No counter-argument raised; stands as written.
 
 - FR-003: Founder can archive a company (soft-delete — data preserved). Priority: must-have
+
   > Socrates: Counter accepted: hard delete destroys uploaded notes and task history.
   > Revised from "delete" to "archive." Hard delete removed from scope.
 
 - FR-004: Founder can view the full company list. Priority: must-have
+
   > Socrates: No counter-argument raised; stands as written.
 
 - FR-005: Founder can set a company relationship status (lead / in progress /
   negotiating / investor / inactive); AI infers status from uploaded content;
   founder can override manually. Priority: must-have
+
   > Socrates: Counter accepted: manual-only status contradicts the zero-friction
   > thesis. Revised: AI infers, founder overrides.
 
@@ -123,6 +129,7 @@ remains useful even when there are no new notes to upload.
 - FR-006: Founder can paste text (email thread, transcript, raw notes) into a
   company; optionally upload a .md file. Text paste is the primary input path.
   Priority: must-have
+
   > Socrates: Counter accepted: founders don't have .md files — they have emails
   > and Google Docs. Text paste is more frictionless than file upload. .md upload
   > kept as optional alternative.
@@ -130,6 +137,7 @@ remains useful even when there are no new notes to upload.
 - FR-007: AI generates a relationship summary from pasted/uploaded content —
   including what was discussed, what was promised, and current relationship status.
   AI must cite the source passage for each claim. Priority: must-have
+
   > Socrates: Counter accepted: one hallucinated commitment poisons the entire
   > product. Resolution: AI must cite source passage. Accuracy > completeness.
   > Confidence signal required before shipping.
@@ -143,29 +151,35 @@ remains useful even when there are no new notes to upload.
 
 - FR-009: Founder can view a global task list across all companies, filtered by
   priority, deadline, and urgency (overdue / due today). Priority: must-have
+
   > Socrates: Counter accepted: global list without filtering is overwhelming at
   > 80 companies. Resolution: smart filtering by urgency/overdue/today is built in.
   > Per-company task view is a drill-down within the global list.
 
 - FR-010: Founder can create a task manually (not AI-generated). Priority: must-have
+
   > Socrates: No counter-argument raised; stands as written.
 
 - FR-011: AI-generated tasks are read-only (can only be completed or dismissed).
   Manually created tasks can be edited. Priority: must-have
+
   > Socrates: Counter accepted: allow manual task editing but not AI task editing
   > to preserve integrity of AI-generated decisions. Clean separation.
 
 - FR-012: Founder can mark any task (AI-generated or manual) as complete.
   Priority: must-have
+
   > Socrates: No counter-argument raised; stands as written.
 
 - FR-013: AI proposes task priority (low / medium / high / urgent); founder can
   override priority on manually created tasks. Priority: must-have
+
   > Socrates: Kept: AI proposes, founder overrides. Full trust-AI approach
   > rejected; manual override is essential.
 
 - FR-014: AI proposes task deadline; founder can override deadline on manually
   created tasks. Priority: must-have
+
   > Socrates: Counter accepted: AI deadline guesses ("next week") will often be
   > wrong. Founder override is essential. AI proposes, founder corrects.
 
@@ -257,13 +271,11 @@ explicit awareness of the effort cost.
 
 Checked on 2026-05-25. All 5 greenfield elements present. Status: accepted.
 
-| Element              | Result  | Note                                                  |
-|----------------------|---------|-------------------------------------------------------|
-| Access Control       | present | email + OAuth, flat single-user model                 |
-| Business Logic       | present | one-sentence rule: commitment extraction + tasks      |
-| Project artifacts    | present | shape-notes.md with valid checkpoint                  |
-| Timeline-cost ack    | present | 4–6 week, after-hours; accepted 2026-05-25            |
-| Non-Goals            | present | 4 entries: chat, reminders, integrations, multi-user  |
-| Preserved behavior   | n/a     | greenfield                                            |
-
-
+| Element            | Result  | Note                                                 |
+| ------------------ | ------- | ---------------------------------------------------- |
+| Access Control     | present | email + OAuth, flat single-user model                |
+| Business Logic     | present | one-sentence rule: commitment extraction + tasks     |
+| Project artifacts  | present | shape-notes.md with valid checkpoint                 |
+| Timeline-cost ack  | present | 4–6 week, after-hours; accepted 2026-05-25           |
+| Non-Goals          | present | 4 entries: chat, reminders, integrations, multi-user |
+| Preserved behavior | n/a     | greenfield                                           |

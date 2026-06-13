@@ -29,3 +29,6 @@ pnpm-debug.log*
 
 # AI agent skills (local only, fetched via 10x-cli)
 .claude/skills/
+
+# AI agent prompts (local only, fetched via 10x-cli)
+.claude/prompts/

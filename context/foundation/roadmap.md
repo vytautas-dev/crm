@@ -91,10 +91,8 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Prerequisites:** F-01
 - **Parallel with:** S-01
 - **Blockers:** —
-- **Unknowns:**
-  - How does a completed job notify the browser (Supabase Realtime WebSocket runs outside the Cloudflare Workers request/response model — flagged undefined in infrastructure.md)? — Owner: user. Block: no.
-  - Which AI provider carries an explicit no-training guarantee to satisfy the privacy NFR? — Owner: user. Block: no.
-- **Risk:** Scoped to the *minimum* plumbing (one job type + one notification channel + provider connection), not "all background processing" — the extraction logic itself lives in S-02 and exercises this plumbing through the real user flow. The notification round-trip is the project's highest technical risk; keeping it in a foundation forces it to be solved before the north star is planned.
+- **Unknowns:** — (both resolved 2026-06-13: notification path → client-side status polling; AI provider → Anthropic Claude API. See `## Open Roadmap Questions`.)
+- **Risk:** Scoped to the *minimum* plumbing (one async job + a status field the browser polls + the Anthropic API call), not "all background processing" — the extraction logic itself lives in S-02 and exercises this plumbing through the real user flow. The polling decision removes the WebSocket-through-Workers risk that infrastructure.md flagged as the project's highest; remaining work is a straightforward async job + status field.
 - **Status:** proposed
 
 ## Slices
@@ -176,8 +174,8 @@ Foundations below assume these are present and do NOT re-scaffold them.
 
 ## Open Roadmap Questions
 
-1. **AI completion → browser notification path.** Supabase Realtime (client-side WebSocket) is the candidate, but it runs outside the Cloudflare Workers request/response model and is undefined in the current stack. — Owner: user/team. Block: F-02, S-02.
-2. **AI provider with an explicit no-training guarantee.** The privacy NFR restricts eligible providers; the choice isn't yet recorded in tech-stack.md. — Owner: user. Block: F-02, S-02.
+1. ~~**AI completion → browser notification path.**~~ **Resolved 2026-06-13: client-side status polling** for MVP (no Supabase Realtime/WebSocket). Avoids the highest technical risk in infrastructure.md and fits the speed goal; the PRD imposes no latency cap. Realtime stays a post-MVP UX upgrade. Unblocked F-02, S-02.
+2. ~~**AI provider with an explicit no-training guarantee.**~~ **Resolved 2026-06-13: Anthropic Claude API** (no training on commercial-API data; citations enforced via structured outputs). Recorded in `tech-stack.md`. Model tier decided in `/10x-plan`. Unblocked F-02, S-02.
 3. **`target_scale.qps` and `target_scale.data_volume` (carried from PRD Open Questions).** Set to `low`/`small` as ballpark; revisit if usage differs. — Owner: user. Block: roadmap-wide (none — non-blocking).
 
 ## Parked

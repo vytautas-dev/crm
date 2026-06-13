@@ -32,3 +32,17 @@ constraint — background AI processing that must run non-blocking — is handle
 routing analysis through Supabase Edge Functions rather than Cloudflare Workers,
 keeping the compute close to the data layer. CI runs on GitHub Actions with
 auto-deploy-on-merge, matching what the starter ships with.
+
+## Resolved decisions (2026-06-13)
+
+- **AI provider: Anthropic Claude API.** Chosen for the privacy NFR — Anthropic does
+  not train on inputs/outputs of the commercial API by default. Citation and
+  no-fabrication requirements (FR-007) are enforced via structured outputs
+  (`output_config.format` / strict tool schema). Model tier is decided per change in
+  `/10x-plan` — candidates: Sonnet 4.6 ($3/$15 per MTok, balanced default), Opus 4.8
+  ($5/$25, max accuracy), Haiku 4.5 ($1/$5, cheapest). Caveat: Claude Fable 5 requires
+  30-day retention (no zero-data-retention) — only relevant if ZDR is later required.
+- **AI completion notification: client-side status polling** (not Supabase Realtime).
+  The browser polls a job/result status field and toasts on completion. Avoids the
+  WebSocket-through-Workers risk flagged in `infrastructure.md`; the PRD imposes no
+  latency cap. Realtime stays a post-MVP UX upgrade.

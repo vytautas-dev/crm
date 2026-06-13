@@ -352,16 +352,16 @@ Greenfield schema — no existing data to migrate. The trigger-function migratio
 
 #### Automated
 
-- [x] 1.1 Local stack starts: `npx supabase start`
-- [x] 1.2 Migration applies cleanly: `npm run db:reset`
-- [x] 1.3 Types regenerate without error: `npm run db:types`
-- [x] 1.4 Type checking passes: `npm run typecheck` (astro check) and build succeeds: `npm run build`
-- [x] 1.5 Linting passes: `npm run lint`
+- [x] 1.1 Local stack starts: `npx supabase start` — 7686b8c
+- [x] 1.2 Migration applies cleanly: `npm run db:reset` — 7686b8c
+- [x] 1.3 Types regenerate without error: `npm run db:types` — 7686b8c
+- [x] 1.4 Type checking passes: `npm run typecheck` (astro check) and build succeeds: `npm run build` — 7686b8c
+- [x] 1.5 Linting passes: `npm run lint` — 7686b8c
 
 #### Manual
 
-- [ ] 1.6 `supabase/migrations/` contains the trigger-function migration; `set_updated_at()` visible in Studio
-- [ ] 1.7 `src/db/database.types.ts` exports `Database`; `src/lib/supabase.ts` compiles with the generic
+- [x] 1.6 `supabase/migrations/` contains the trigger-function migration; `set_updated_at()` visible in Studio — 7686b8c
+- [x] 1.7 `src/db/database.types.ts` exports `Database`; `src/lib/supabase.ts` compiles with the generic — 7686b8c
 
 ### Phase 2: RLS convention — template + reference doc
 

@@ -77,7 +77,7 @@ for the duration of the test.
   table + policies + trigger before the user-scoped assertions and drop them (and delete the
   two test users) in teardown, even on assertion failure (`afterAll`/`finally`). A leaked canary
   table or test user would pollute the local DB and make reruns flaky.
-- **Two distinct auth contexts.** Isolation can only be proven with two *separate* signed-in
+- **Two distinct auth contexts.** Isolation can only be proven with two _separate_ signed-in
   supabase-js clients (one per user), each created with the anon key and its own session — not
   one client with `auth.uid()` swapped. Use the service-role key only for admin user creation
   (`auth.admin.createUser` with `email_confirm: true`) and the `pg` admin connection only for DDL.
@@ -125,7 +125,7 @@ $$;
 
 **Contract**: Add scripts — `db:new` → `supabase migration new`, `db:reset` → `supabase db reset`,
 `db:types` → `mkdir -p src/db && supabase gen types typescript --local > src/db/database.types.ts` (the `mkdir -p` makes it robust on a fresh checkout where `src/db/` doesn't exist yet), and
-`typecheck` → `astro check` (`@astrojs/check` is already a devDependency; `astro build` does *not*
+`typecheck` → `astro check` (`@astrojs/check` is already a devDependency; `astro build` does _not_
 typecheck TS, so this is the real type gate). (The `test` script is added in Phase 3.)
 
 #### 3. Generated Database types
@@ -220,7 +220,7 @@ and the "how to verify" pointer to `npm test`.
 **File**: `supabase/tests/fixtures/canary_table.sql` (consumed by the Phase 3 test)
 
 **Intent**: A throwaway instantiation of the template (`public.canary`) the test applies and drops,
-so the test verifies the *actual* documented template, not a divergent copy.
+so the test verifies the _actual_ documented template, not a divergent copy.
 
 **Contract**: The SQL block above with `<entity>` = `canary` and no extra entity columns. Idempotent-friendly (the test drops before/after).
 
@@ -290,9 +290,10 @@ data, run against the local stack.
 **Intent**: Prove the documented template enforces per-user isolation end-to-end via the real anon-key/JWT path.
 
 **Contract**: Lifecycle and assertions —
+
 - `beforeAll`: open a `pg` admin connection (`SUPABASE_DB_URL`), drop+apply `supabase/tests/fixtures/canary_table.sql`; via service-role supabase client, `auth.admin.createUser({ email_confirm: true })` for user A and user B.
 - Build two anon-key clients, `signInWithPassword` as A and B respectively.
-- Assert: A inserts a row (succeeds); A selects → sees its row; **B selects → empty array**; **B update of A's row → chain `.select()`, assert returned array is empty**; **B delete of A's row → chain `.select()`, assert returned array is empty**; **read back as A → row still present with field values unchanged** (this read-back is the real isolation check — a silently-filtered UPDATE/DELETE returns no error, so do NOT assert via thrown errors); an insert by B with `user_id` forced to A's id → rejected by `WITH CHECK` (this case *does* error).
+- Assert: A inserts a row (succeeds); A selects → sees its row; **B selects → empty array**; **B update of A's row → chain `.select()`, assert returned array is empty**; **B delete of A's row → chain `.select()`, assert returned array is empty**; **read back as A → row still present with field values unchanged** (this read-back is the real isolation check — a silently-filtered UPDATE/DELETE returns no error, so do NOT assert via thrown errors); an insert by B with `user_id` forced to A's id → rejected by `WITH CHECK` (this case _does_ error).
 - `afterAll` (always runs): delete users A and B; `drop table if exists public.canary cascade`; close the `pg` connection.
 
 ### Success Criteria:
@@ -367,13 +368,13 @@ Greenfield schema — no existing data to migrate. The trigger-function migratio
 
 #### Automated
 
-- [ ] 2.1 Linting passes: `npm run lint`
-- [ ] 2.2 Format check passes: `npm run format`
+- [x] 2.1 Linting passes: `npm run lint`
+- [x] 2.2 Format check passes: `npm run format`
 
 #### Manual
 
-- [ ] 2.3 `docs/reference/rls-convention.md` renders; SQL block matches the canary fixture
-- [ ] 2.4 CLAUDE.md pointer resolves to the new doc
+- [x] 2.3 `docs/reference/rls-convention.md` renders; SQL block matches the canary fixture
+- [x] 2.4 CLAUDE.md pointer resolves to the new doc
 
 ### Phase 3: Automated isolation verification (Vitest canary)
 

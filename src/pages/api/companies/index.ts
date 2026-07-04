@@ -21,7 +21,8 @@ export const GET: APIRoute = async (context) => {
 
   const result = await listActiveCompanies(supabase);
   if (!result.ok) {
-    return json({ error: result.error }, 500);
+    console.error("companies API error:", result.error);
+    return json({ error: "Something went wrong" }, 500);
   }
   return json({ companies: result.data }, 200);
 };
@@ -49,7 +50,8 @@ export const POST: APIRoute = async (context) => {
 
   const result = await createCompany(supabase, parsed.data);
   if (!result.ok) {
-    return json({ error: result.error }, 500);
+    console.error("companies API error:", result.error);
+    return json({ error: "Something went wrong" }, 500);
   }
   return json({ company: result.data }, 201);
 };

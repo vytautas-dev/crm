@@ -38,7 +38,8 @@ export const PATCH: APIRoute = async (context) => {
 
   const result = await updateCompany(supabase, id, parsed.data);
   if (!result.ok) {
-    return json({ error: result.error }, 500);
+    console.error("companies API error:", result.error);
+    return json({ error: "Something went wrong" }, 500);
   }
   if (!result.data) {
     return json({ error: "Company not found" }, 404);
@@ -62,7 +63,8 @@ export const DELETE: APIRoute = async (context) => {
 
   const result = await archiveCompany(supabase, id);
   if (!result.ok) {
-    return json({ error: result.error }, 500);
+    console.error("companies API error:", result.error);
+    return json({ error: "Something went wrong" }, 500);
   }
   if (!result.data) {
     return json({ error: "Company not found" }, 404);

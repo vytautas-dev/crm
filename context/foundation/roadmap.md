@@ -3,7 +3,7 @@ project: AI Relationship & Fundraising Assistant
 version: 1
 status: draft
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-07-04
 prd_version: 1
 main_goal: speed
 top_blocker: time
@@ -39,7 +39,7 @@ this loop works; it directly satisfies the PRD's primary Success Criterion (US-0
 | ---- | ------------------------ | ---------------------------------------------------------------- | ---------------- | --------------------------------------------- | -------- |
 | F-01 | persistence-rls-baseline | (foundation) owner-scoped persistence + RLS convention live      | —                | NFR: privacy                                  | ready    |
 | F-02 | background-ai-pipeline   | (foundation) async AI job + completion notification channel      | F-01             | NFR: background, NFR: privacy                 | proposed |
-| S-01 | company-management       | add, edit, archive, list, and set status on companies            | F-01             | US-01, FR-001, FR-002, FR-003, FR-004, FR-005 | proposed |
+| S-01 | company-management       | add, edit, archive, list, and set status on companies            | F-01             | US-01, FR-001, FR-002, FR-003, FR-004, FR-005 | done     |
 | S-02 | paste-to-summary-tasks   | paste notes → cited summary + 1–5 prioritized tasks              | S-01, F-01, F-02 | US-01, FR-005, FR-006, FR-007, FR-008         | proposed |
 | S-03 | global-task-list         | view/filter the global task list, complete, drill into a company | S-02             | FR-009, FR-011, FR-012, FR-015                | proposed |
 | S-04 | manual-task-management   | create and edit manual tasks with priority and deadline          | S-02             | FR-010, FR-011, FR-012, FR-013, FR-014        | proposed |
@@ -107,7 +107,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** Straightforward owner-scoped CRUD on top of F-01's RLS convention; sequenced before the north star because the AI loop needs a company to attach content to. Low risk, high unlock value.
-- **Status:** proposed
+- **Status:** done
 
 ### S-02: Paste notes → cited summary + tasks (north star)
 
@@ -189,4 +189,4 @@ Foundations below assume these are present and do NOT re-scaffold them.
 
 ## Done
 
-(Empty on first generation. `/10x-archive` appends here — and flips the item's `Status` to `done` — when a change whose `Change ID` matches an item is archived.)
+- **S-01: Founder can add, edit, archive (soft-delete, data preserved), and list companies, and set a relationship status manually.** — Archived 2026-07-04 → `context/archive/2026-07-04-company-management/`. Lesson: —.

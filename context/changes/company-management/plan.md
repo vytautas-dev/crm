@@ -341,9 +341,9 @@ Additive migration only (new table). `npm run db:reset` rebuilds local state; no
 ### Phase 4: Automated tests — companies isolation + validators
 
 #### Automated
-- [x] 4.1 Full suite passes against local stack: `npm test`
-- [x] 4.2 Type checking passes: `npm run typecheck`
-- [x] 4.3 Linting passes: `npm run lint`
+- [x] 4.1 Full suite passes against local stack: `npm test` — 6336a85
+- [x] 4.2 Type checking passes: `npm run typecheck` — 6336a85
+- [x] 4.3 Linting passes: `npm run lint` — 6336a85
 
 #### Manual
-- [x] 4.4 Weakening a policy or the `archived_at` filter makes the isolation test fail (confirms it guards the invariant)
+- [x] 4.4 Weakening a policy or the `archived_at` filter makes the isolation test fail (confirms it guards the invariant) — 6336a85

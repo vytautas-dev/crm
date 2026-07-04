@@ -328,22 +328,22 @@ Additive migration only (new table). `npm run db:reset` rebuilds local state; no
 ### Phase 3: UI — companies page + React island
 
 #### Automated
-- [x] 3.1 Type checking passes: `npm run typecheck`
-- [x] 3.2 Linting passes: `npm run lint`
-- [x] 3.3 Build passes: `npm run build`
+- [x] 3.1 Type checking passes: `npm run typecheck` — 01793b0
+- [x] 3.2 Linting passes: `npm run lint` — 01793b0
+- [x] 3.3 Build passes: `npm run build` — 01793b0
 
 #### Manual
-- [x] 3.4 Add / edit name / inline status change all persist after reload; Archive removes from list but row remains in DB
-- [x] 3.5 Optimistic status update rolls back on a forced API error
-- [x] 3.6 Second user sees none of the first user's companies
-- [x] 3.7 Empty / loading / error states render correctly
+- [x] 3.4 Add / edit name / inline status change all persist after reload; Archive removes from list but row remains in DB — 01793b0
+- [x] 3.5 Optimistic status update rolls back on a forced API error — 01793b0
+- [x] 3.6 Second user sees none of the first user's companies — 01793b0
+- [x] 3.7 Empty / loading / error states render correctly — 01793b0
 
 ### Phase 4: Automated tests — companies isolation + validators
 
 #### Automated
-- [ ] 4.1 Full suite passes against local stack: `npm test`
-- [ ] 4.2 Type checking passes: `npm run typecheck`
-- [ ] 4.3 Linting passes: `npm run lint`
+- [x] 4.1 Full suite passes against local stack: `npm test`
+- [x] 4.2 Type checking passes: `npm run typecheck`
+- [x] 4.3 Linting passes: `npm run lint`
 
 #### Manual
-- [ ] 4.4 Weakening a policy or the `archived_at` filter makes the isolation test fail (confirms it guards the invariant)
+- [x] 4.4 Weakening a policy or the `archived_at` filter makes the isolation test fail (confirms it guards the invariant)

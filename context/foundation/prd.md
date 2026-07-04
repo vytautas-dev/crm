@@ -96,25 +96,30 @@ task list useful even when no new notes exist.
 ### Company Management
 
 - FR-001: Founder can add a company. Priority: must-have
+
   > Socrates: Counter considered: "bulk import beats manual add for 80 companies."
   > Resolution: FR-016 added as must-have CSV import. Manual add is still needed
   > for one-off additions.
 
 - FR-002: Founder can edit a company. Priority: must-have
+
   > Socrates: No counter-argument raised; stands as written.
 
 - FR-003: Founder can archive a company (data preserved, company hidden from the
   active list). Priority: must-have
+
   > Socrates: Counter accepted: permanent deletion destroys uploaded notes and
   > task history. Revised from "delete" to "archive." Permanent deletion removed
   > from scope.
 
 - FR-004: Founder can view the full company list. Priority: must-have
+
   > Socrates: No counter-argument raised; stands as written.
 
 - FR-005: Founder can set a company relationship status (lead / in progress /
   negotiating / investor / inactive); the product infers status from submitted
   content; founder can override manually. Priority: must-have
+
   > Socrates: Counter accepted: manual-only status contradicts the zero-friction
   > thesis. Revised: product infers, founder overrides.
 
@@ -127,6 +132,7 @@ task list useful even when no new notes exist.
 - FR-006: Founder can paste text (email thread, transcript, raw notes) into a
   company; optionally attach a .md file. Text paste is the primary input path.
   Priority: must-have
+
   > Socrates: Counter accepted: founders rarely have .md files — they have emails
   > and documents. Text paste is more frictionless than file upload. File
   > attachment kept as optional alternative.
@@ -135,6 +141,7 @@ task list useful even when no new notes exist.
   including what was discussed, what was promised, and an inferred relationship
   status. Every extracted commitment includes a citation to the source passage.
   Priority: must-have
+
   > Socrates: Counter accepted: one hallucinated commitment poisons the entire
   > product. Resolution: source citation required. Accuracy takes priority over
   > completeness. Confidence signal required before shipping.
@@ -148,30 +155,36 @@ task list useful even when no new notes exist.
 
 - FR-009: Founder can view a global task list across all companies, filtered by
   priority, deadline, and urgency (overdue / due today). Priority: must-have
+
   > Socrates: Counter accepted: an unfiltered list across 80 companies becomes
   > overwhelming. Resolution: filtering by urgency/overdue/today is built in.
   > Per-company task view is a drill-down within the global list.
 
 - FR-010: Founder can create a task manually. Priority: must-have
+
   > Socrates: No counter-argument raised; stands as written.
 
 - FR-011: Product-generated tasks are read-only (can only be completed or
   dismissed). Manually created tasks can be edited. Priority: must-have
+
   > Socrates: Counter accepted: prohibiting edits on product-generated tasks
   > preserves the integrity of the extracted decisions. Clean separation between
   > extracted and manual tasks.
 
 - FR-012: Founder can mark any task (product-generated or manual) as complete.
   Priority: must-have
+
   > Socrates: No counter-argument raised; stands as written.
 
 - FR-013: The product proposes task priority (low / medium / high / urgent);
   founder can override priority on manually created tasks. Priority: must-have
+
   > Socrates: Kept: product proposes, founder overrides. Full trust-the-product
   > approach rejected; manual override is essential.
 
 - FR-014: The product proposes a task deadline; founder can override deadline on
   manually created tasks. Priority: must-have
+
   > Socrates: Counter accepted: proposed deadlines ("next week") will often be
   > wrong. Founder override is essential. Product proposes, founder corrects.
 

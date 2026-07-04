@@ -50,10 +50,10 @@ auto-deploy-on-merge, matching what the starter ships with.
 
 ## Pre-scaffold verification
 
-| Signal      | Value                                      | Severity    | Notes                                      |
-| ----------- | ------------------------------------------ | ----------- | ------------------------------------------ |
-| npm package | not run                                    | —           | cmd_template starts with `git clone`; npm check skipped |
-| GitHub repo | not run                                    | —           | `gh` CLI not available; recency check unavailable |
+| Signal      | Value   | Severity | Notes                                                   |
+| ----------- | ------- | -------- | ------------------------------------------------------- |
+| npm package | not run | —        | cmd_template starts with `git clone`; npm check skipped |
+| GitHub repo | not run | —        | `gh` CLI not available; recency check unavailable       |
 
 ## Scaffold log
 
@@ -67,9 +67,9 @@ auto-deploy-on-merge, matching what the starter ships with.
 
 ### Conflict detail
 
-| File | Resolution |
-| ---- | ---------- |
-| `CLAUDE.md` | Existing wins; starter's copy saved as `CLAUDE.md.scaffold` |
+| File           | Resolution                                                     |
+| -------------- | -------------------------------------------------------------- |
+| `CLAUDE.md`    | Existing wins; starter's copy saved as `CLAUDE.md.scaffold`    |
 | `package.json` | Existing wins; starter's copy saved as `package.json.scaffold` |
 
 > **Action required**: Review `CLAUDE.md.scaffold` and `package.json.scaffold` — diff them against the active files and merge any configuration, scripts, or agent-context content you need from the starter's copies.
@@ -83,6 +83,7 @@ auto-deploy-on-merge, matching what the starter ships with.
 #### HIGH findings
 
 **devalue** (v5.6.3 – 5.8.0)
+
 - Advisory: GHSA-77vg-94rm-hx3p — Svelte devalue: DoS via sparse array deserialization
 - CVSS: 7.5 (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H)
 - Via: transitive dev dependency chain
@@ -105,21 +106,21 @@ All MODERATE findings are in dev/build tooling. None affect the production depen
 
 ## Hints recorded but not acted on
 
-| Hint                    | Value                  |
-| ----------------------- | ---------------------- |
-| bootstrapper_confidence | first-class            |
-| quality_override        | false                  |
-| path_taken              | standard               |
-| self_check_answers      | null                   |
-| team_size               | solo                   |
-| deployment_target       | cloudflare-pages       |
-| ci_provider             | github-actions         |
-| ci_default_flow         | auto-deploy-on-merge   |
-| has_auth                | true                   |
-| has_payments            | false                  |
-| has_realtime            | false                  |
-| has_ai                  | true                   |
-| has_background_jobs     | true                   |
+| Hint                    | Value                |
+| ----------------------- | -------------------- |
+| bootstrapper_confidence | first-class          |
+| quality_override        | false                |
+| path_taken              | standard             |
+| self_check_answers      | null                 |
+| team_size               | solo                 |
+| deployment_target       | cloudflare-pages     |
+| ci_provider             | github-actions       |
+| ci_default_flow         | auto-deploy-on-merge |
+| has_auth                | true                 |
+| has_payments            | false                |
+| has_realtime            | false                |
+| has_ai                  | true                 |
+| has_background_jobs     | true                 |
 
 v1 bootstrapper reads these for logging and conversation surfacing only. A future M1L4 skill will act on `has_auth`, `has_ai`, `has_background_jobs`, and `deployment_target` to scaffold agent context (CLAUDE.md, AGENTS.md) and CI workflows.
 
@@ -128,6 +129,7 @@ v1 bootstrapper reads these for logging and conversation surfacing only. A futur
 Next: a future skill will set up agent context (CLAUDE.md, AGENTS.md). For now, your project is scaffolded and verified — happy hacking.
 
 Useful manual steps in the meantime:
+
 - Review `CLAUDE.md.scaffold` and diff it against your `CLAUDE.md` — merge the starter's agent-context content (Supabase patterns, Astro conventions) that belongs there.
 - Review `package.json.scaffold` and compare it to your `package.json` — the starter's version has all the Astro, Supabase, and Cloudflare scripts; you'll likely want to use it as the base.
 - `npm audit fix` to resolve the 10 transitive findings (all have fixes available).

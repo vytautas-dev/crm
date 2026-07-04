@@ -58,18 +58,18 @@ npx wrangler rollback [version-id]
 
 ## Known risks at time of first deploy
 
-| Risk | Mitigation |
-|---|---|
-| Middleware + nodejs_compat bug (#15434) | If pages render as `[object Object]`, temporarily disable middleware to isolate |
-| 10ms CPU free-tier limit | Upgrade to Workers Paid ($5/mo) before any production traffic with real data |
-| React hydration SyntaxError (#16387) | Check browser console; fix is to restructure `react-dom/client` import path |
-| wrangler.jsonc was previously in Pages mode | Verified: `main` entry point confirms Workers mode |
+| Risk                                        | Mitigation                                                                      |
+| ------------------------------------------- | ------------------------------------------------------------------------------- |
+| Middleware + nodejs_compat bug (#15434)     | If pages render as `[object Object]`, temporarily disable middleware to isolate |
+| 10ms CPU free-tier limit                    | Upgrade to Workers Paid ($5/mo) before any production traffic with real data    |
+| React hydration SyntaxError (#16387)        | Check browser console; fix is to restructure `react-dom/client` import path     |
+| wrangler.jsonc was previously in Pages mode | Verified: `main` entry point confirms Workers mode                              |
 
 ## Secrets reference
 
-| Secret | Where set | Purpose |
-|---|---|---|
-| `SUPABASE_URL` | `wrangler secret put` + GitHub secret | Supabase project URL |
-| `SUPABASE_KEY` | `wrangler secret put` + GitHub secret | Supabase anon key |
-| `CLOUDFLARE_API_TOKEN` | GitHub secret only | CI deploy (scoped: Workers:Edit) |
-| `CLOUDFLARE_ACCOUNT_ID` | GitHub secret only | CI deploy target account |
+| Secret                  | Where set                             | Purpose                          |
+| ----------------------- | ------------------------------------- | -------------------------------- |
+| `SUPABASE_URL`          | `wrangler secret put` + GitHub secret | Supabase project URL             |
+| `SUPABASE_KEY`          | `wrangler secret put` + GitHub secret | Supabase anon key                |
+| `CLOUDFLARE_API_TOKEN`  | GitHub secret only                    | CI deploy (scoped: Workers:Edit) |
+| `CLOUDFLARE_ACCOUNT_ID` | GitHub secret only                    | CI deploy target account         |

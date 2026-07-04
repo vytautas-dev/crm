@@ -37,7 +37,7 @@ this loop works; it directly satisfies the PRD's primary Success Criterion (US-0
 
 | ID   | Change ID                | Outcome (user can …)                                             | Prerequisites    | PRD refs                                      | Status   |
 | ---- | ------------------------ | ---------------------------------------------------------------- | ---------------- | --------------------------------------------- | -------- |
-| F-01 | persistence-rls-baseline | (foundation) owner-scoped persistence + RLS convention live      | —                | NFR: privacy                                  | ready    |
+| F-01 | persistence-rls-baseline | (foundation) owner-scoped persistence + RLS convention live      | —                | NFR: privacy                                  | done     |
 | F-02 | background-ai-pipeline   | (foundation) async AI job + completion notification channel      | F-01             | NFR: background, NFR: privacy                 | proposed |
 | S-01 | company-management       | add, edit, archive, list, and set status on companies            | F-01             | US-01, FR-001, FR-002, FR-003, FR-004, FR-005 | done     |
 | S-02 | paste-to-summary-tasks   | paste notes → cited summary + 1–5 prioritized tasks              | S-01, F-01, F-02 | US-01, FR-005, FR-006, FR-007, FR-008         | proposed |
@@ -80,7 +80,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** —
 - **Unknowns:** —
 - **Risk:** Minimal enabler, not a schema build-out — it sets the tooling + RLS pattern only; entity tables arrive with their slices. Sequenced first because the privacy guardrail gates every slice and getting the RLS convention wrong later means reworking every table.
-- **Status:** ready
+- **Status:** done
 
 ### F-02: Background AI analysis job + completion notification
 
@@ -190,3 +190,4 @@ Foundations below assume these are present and do NOT re-scaffold them.
 ## Done
 
 - **S-01: Founder can add, edit, archive (soft-delete, data preserved), and list companies, and set a relationship status manually.** — Archived 2026-07-04 → `context/archive/2026-07-04-company-management/`. Lesson: —.
+- **F-01: (foundation) Supabase migration tooling is wired and an owner-scoped, per-operation RLS policy template is established and verified, so every later entity persists privately to the authenticated founder by default.** — Archived 2026-07-04 → `context/archive/2026-06-13-persistence-rls-baseline/`. Lesson: —.

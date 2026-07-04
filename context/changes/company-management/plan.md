@@ -304,26 +304,26 @@ Additive migration only (new table). `npm run db:reset` rebuilds local state; no
 ### Phase 1: Data layer — companies table, types, shared entity types
 
 #### Automated
-- [x] 1.1 Migration applies cleanly: `npm run db:reset`
-- [x] 1.2 Types regenerate with the table present: `npm run db:types` then `grep -q "companies" src/db/database.types.ts`
-- [x] 1.3 Type checking passes: `npm run typecheck`
-- [x] 1.4 Linting passes: `npm run lint`
+- [x] 1.1 Migration applies cleanly: `npm run db:reset` — 91de523
+- [x] 1.2 Types regenerate with the table present: `npm run db:types` then `grep -q "companies" src/db/database.types.ts` — 91de523
+- [x] 1.3 Type checking passes: `npm run typecheck` — 91de523
+- [x] 1.4 Linting passes: `npm run lint` — 91de523
 
 #### Manual
-- [x] 1.5 `companies` exists in Studio with RLS enabled, CHECK constraint, and 4 policies
-- [x] 1.6 Insert as signed-in user works; `updated_at` trigger fires on update
+- [x] 1.5 `companies` exists in Studio with RLS enabled, CHECK constraint, and 4 policies — 91de523
+- [x] 1.6 Insert as signed-in user works; `updated_at` trigger fires on update — 91de523
 
 ### Phase 2: API + service layer — zod, service, JSON routes, route guard
 
 #### Automated
-- [ ] 2.1 `zod` present: `grep -q '"zod"' package.json`
-- [ ] 2.2 Type checking passes: `npm run typecheck`
-- [ ] 2.3 Linting passes: `npm run lint`
-- [ ] 2.4 Build passes: `npm run build`
+- [x] 2.1 `zod` present: `grep -q '"zod"' package.json`
+- [x] 2.2 Type checking passes: `npm run typecheck`
+- [x] 2.3 Linting passes: `npm run lint`
+- [x] 2.4 Build passes: `npm run build`
 
 #### Manual
-- [ ] 2.5 GET returns only own companies; POST valid creates; POST empty name → 400; PATCH bad id → 404; DELETE archives (hidden from GET, still in DB)
-- [ ] 2.6 Unauthenticated `/api/companies` → 401 (or redirect for the page)
+- [x] 2.5 GET returns only own companies; POST valid creates; POST empty name → 400; PATCH bad id → 404; DELETE archives (hidden from GET, still in DB)
+- [x] 2.6 Unauthenticated `/api/companies` → 401 (or redirect for the page)
 
 ### Phase 3: UI — companies page + React island
 

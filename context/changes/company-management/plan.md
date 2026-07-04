@@ -316,27 +316,27 @@ Additive migration only (new table). `npm run db:reset` rebuilds local state; no
 ### Phase 2: API + service layer — zod, service, JSON routes, route guard
 
 #### Automated
-- [x] 2.1 `zod` present: `grep -q '"zod"' package.json`
-- [x] 2.2 Type checking passes: `npm run typecheck`
-- [x] 2.3 Linting passes: `npm run lint`
-- [x] 2.4 Build passes: `npm run build`
+- [x] 2.1 `zod` present: `grep -q '"zod"' package.json` — 8cbe633
+- [x] 2.2 Type checking passes: `npm run typecheck` — 8cbe633
+- [x] 2.3 Linting passes: `npm run lint` — 8cbe633
+- [x] 2.4 Build passes: `npm run build` — 8cbe633
 
 #### Manual
-- [x] 2.5 GET returns only own companies; POST valid creates; POST empty name → 400; PATCH bad id → 404; DELETE archives (hidden from GET, still in DB)
-- [x] 2.6 Unauthenticated `/api/companies` → 401 (or redirect for the page)
+- [x] 2.5 GET returns only own companies; POST valid creates; POST empty name → 400; PATCH bad id → 404; DELETE archives (hidden from GET, still in DB) — 8cbe633
+- [x] 2.6 Unauthenticated `/api/companies` → 401 (or redirect for the page) — 8cbe633
 
 ### Phase 3: UI — companies page + React island
 
 #### Automated
-- [ ] 3.1 Type checking passes: `npm run typecheck`
-- [ ] 3.2 Linting passes: `npm run lint`
-- [ ] 3.3 Build passes: `npm run build`
+- [x] 3.1 Type checking passes: `npm run typecheck`
+- [x] 3.2 Linting passes: `npm run lint`
+- [x] 3.3 Build passes: `npm run build`
 
 #### Manual
-- [ ] 3.4 Add / edit name / inline status change all persist after reload; Archive removes from list but row remains in DB
-- [ ] 3.5 Optimistic status update rolls back on a forced API error
-- [ ] 3.6 Second user sees none of the first user's companies
-- [ ] 3.7 Empty / loading / error states render correctly
+- [x] 3.4 Add / edit name / inline status change all persist after reload; Archive removes from list but row remains in DB
+- [x] 3.5 Optimistic status update rolls back on a forced API error
+- [x] 3.6 Second user sees none of the first user's companies
+- [x] 3.7 Empty / loading / error states render correctly
 
 ### Phase 4: Automated tests — companies isolation + validators
 

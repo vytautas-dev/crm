@@ -1,7 +1,7 @@
 ---
 change_id: company-management
 title: Company management — add, edit, archive, list, and set status on companies
-status: implemented
+status: impl_reviewed
 created: 2026-07-04
 updated: 2026-07-04
 archived_at: null
